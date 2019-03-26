@@ -1,10 +1,11 @@
 h1 {
-    color:red;
+    color: black;
 }
 
 .content-column-not-bootstrap{
     padding-left: 5%;
     padding-right: 5%;
+
 }
 
 .selected-tip-percentage{
