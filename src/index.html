@@ -14,7 +14,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text">$</span>
       </div>
-      <input type="number" id="bill-amount" class="form-control" min="0">
+      <input type="number" id="bill-amount-input" class="form-control" min="0">
     </div>
     <div>
       <h1></h1>
@@ -31,10 +31,10 @@
     </div>
     <div>
       <ul class="list-group">
-        <li class="list-group-item">Bill amount: </li>
-        <li class="list-group-item">Tip Percentage:</li>
-        <li class="list-group-item">Amount of tip:</li>
-        <li class="list-group-item">Total to be Paid: </li>
+        <li class="list-group-item" >Bill amount: <span id="displayed-bill-amount"></span></li>
+        <li class="list-group-item" >Tip Percentage:<span id="displayed-tip-percentage"></span></li>
+        <li class="list-group-item" >Amount of tip:<span id="displayed-tip-amount"></span></li>
+        <li class="list-group-item" >Total to be Paid: <span id="displayed-total-due"></span> </li>
       </ul>
     </div>
   </div>
