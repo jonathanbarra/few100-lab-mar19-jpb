@@ -23,14 +23,6 @@ tipPercentageButtons.forEach((tipAmountButton) =>{
 })
 console.log("right after the tipPercentageButtons foreach block");
 
-/* function setTipPercentageWithClick(){
-    const button = this as HTMLLIElement;
-    setDisabledButtonId();
-    setTipPercentage();
-    computeAmountOfTip();
-    computeTotalDue();
-} */
-
 function setTipPercentageWithClick(){
     const button = this as HTMLLIElement;
     console.log(button.id);
@@ -38,9 +30,12 @@ function setTipPercentageWithClick(){
     tipPercentageButtons.forEach((tipAmountButton) =>{
         if(tipAmountButton.className === "list-group-item active"){
             tipAmountButton.className = "list-group-item";
+            tipAmountButton.addEventListener('click', setTipPercentageWithClick);
         };
         if(tipAmountButton.id === tipPercentageButtonId){
             tipAmountButton.className = "list-group-item active";
+            tipAmountButton.removeEventListener('click', setTipPercentageWithClick);
+
         };
     switch (button.id) {
         case "ten-percent":
