@@ -61,8 +61,9 @@ function setTipPercentageWithClick(){
         default:
             break;
     }
-    //if(billAmount  >= 0){
-    //}
+    if(billAmount  >= 0){
+        computeTipAmountAndTotalBill();
+    }
 });
 }
 
