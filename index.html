@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Webpack Showcase</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="content-column-not-bootstrap">
+    <h1>Tip Calculator</h1>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">$</span>
+      </div>
+      <input type="number" id="bill-amount-input" class="form-control" min="0">
+    </div>
+    <div>
+      <h1></h1>
+    </div>
+    <div>
+      <ul class="list-group list-group-horizontal-md" id="tip-amount-buttons">
+        <li class="list-group-item" id="ten-percent" >10%</li>
+        <li class="list-group-item" id="fifteen-percent">15%</li>
+        <li class="list-group-item" id="twenty-percent">20%</li>
+      </ul>
+    </div>
+    <div>
+      <h1></h1>
+    </div>
+    <div>
+      <ul class="list-group">
+        <li class="list-group-item" >Bill amount: <span id="displayed-bill-amount"></span></li>
+        <li class="list-group-item" >Tip Percentage:<span id="displayed-tip-percentage"></span></li>
+        <li class="list-group-item" >Amount of tip:<span id="displayed-tip-amount"></span></li>
+        <li class="list-group-item" >Total to be Paid: <span id="displayed-total-due"></span> </li>
+      </ul>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
