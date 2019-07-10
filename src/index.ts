@@ -1,12 +1,8 @@
 import './styles.css';
-console.log('Ready to Party');
-console.log('When it\'s time to party');
-console.log("we will PARTY HARD!");
 
 let billAmountInput: HTMLInputElement = document.querySelector('#bill-amount-input');
 let billAmount: number;
-const displayedTipAmountText = document.querySelector('#you-are-tipping-text')  as HTMLSpanElement;
-//displayedTipAmountText.innerText = "You have not selected a tip percentage";
+let displayedTipAmountText = document.querySelector('#you-are-tipping-text')  as HTMLSpanElement;
 let displayedBillAmount = document.querySelector('#displayed-bill-amount');
 let displayedTipPercentage = document.querySelector('#displayed-tip-percentage');
 let displayedTipAmount = document.querySelector('#displayed-tip-amount');
@@ -19,22 +15,25 @@ const tipPercentageButtons = horizontalTipPercentageButtons.querySelectorAll("li
 billAmountInput.addEventListener('blur', displayBillAmountInput);
 
 tipPercentageButtons.forEach((tipAmountButton) => {
-    tipAmountButton.addEventListener('click', setTipPercentageWithClick)
+    tipAmountButton.addEventListener('click', setTipPercentageWithClick);
 })
 
-function displayBillAmountInput() {
+function validateInputBillAmount() {
     billAmount = parseInt(billAmountInput.value);
-    console.log(`display bill amount was called with value of ${billAmount}`);
+    let billAmountDecimalString = billAmount.toFixed(2);
+    billAmount = parseInt(billAmountDecimalString);
+    console.log(`The validateInputBillAmount value is: ${billAmount}`);
+}
+
+function displayBillAmountInput() {
+    validateInputBillAmount();
     if (billAmount < 0) {
-        console.log(`bill amount is less than zero`);
         billAmountInput.classList.add("border-danger");
         tipAmountAndTotalBillError();
     }
     if (billAmount >= 0) {
         billAmountInput.classList.remove("border-danger");
-        displayedBillAmount.innerHTML = `                ${billAmount.toString()}`;
-        console.log("billAmount >= 0");
-        console.log(`display bill amount was called with value of ${billAmount}`);
+        displayedBillAmount.innerHTML = `                ${(billAmount.toFixed(2)).toString()}`;
         console.log(`the value of the tip percentage multiplier is ${tipPercentageMultiplier}`);
     }
     if (tipPercentageMultiplier > 0) {
@@ -50,34 +49,35 @@ function setTipPercentageWithClick() {
         if (tipAmountButton.className === "list-group-item active") {
             tipAmountButton.className = "list-group-item";
             tipAmountButton.addEventListener('click', setTipPercentageWithClick);
+            console.log(`Removing the active class from ${tipAmountButton.id}`);
         };
         if (tipAmountButton.id === tipPercentageButtonId) {
             tipAmountButton.className = "list-group-item active";
             tipAmountButton.removeEventListener('click', setTipPercentageWithClick);
+            console.log(`Adding the active class to ${tipAmountButton.id}`);
         };
-        switch (button.id) {
+        switch (tipPercentageButtonId) {
             case "ten-percent":
-                tipPercentageMultiplier = .1;
-                displayedTipPercentage.innerHTML = `            10%`;
+                tipPercentageMultiplier = .10;
+                displayedTipPercentage.innerHTML = `10%`;
                 break;
             case "fifteen-percent":
                 tipPercentageMultiplier = .15;
-                displayedTipPercentage.innerHTML = `           15%`;
+                displayedTipPercentage.innerHTML = `15%`;
                 break;
             case "twenty-percent":
-                tipPercentageMultiplier = .2;
-                displayedTipPercentage.innerHTML = `           20%`;
+                tipPercentageMultiplier = .20;
+                displayedTipPercentage.innerHTML = `20%`;
                 break;
             default:
                 break;
-        }
-
-        displayedTipAmountText.innerHTML = `You are tipping ${displayedTipPercentage.innerHTML}`;
-
-        if (billAmount >= 0) {
-            computeTipAmountAndTotalBill();
-        }
+        };
     });
+    console.log(`The inner html of the displayedTipPercentage is ${displayedTipPercentage.innerHTML}`);
+    //displayedTipAmountText.innerHTML = `You are tipping ${displayedTipPercentage.innerHTML}`;
+    computeTipAmountAndTotalBill();
+
+    //displayedTipAmountText.innerHTML = `You are tipping ${displayedTipPercentage.innerHTML}`;
 }
 
 function computeTipAmountAndTotalBill() {
