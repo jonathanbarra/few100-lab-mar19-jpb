@@ -26,6 +26,7 @@ function validateInputBillAmount() {
 }
 
 function displayBillAmountInput() {
+    displayedTipAmountText.innerHTML = "";
     validateInputBillAmount();
     if (billAmount < 0) {
         billAmountInput.classList.add("border-danger");
@@ -33,7 +34,7 @@ function displayBillAmountInput() {
     }
     if (billAmount >= 0) {
         billAmountInput.classList.remove("border-danger");
-        displayedBillAmount.innerHTML = `                ${(billAmount.toFixed(2)).toString()}`;
+        displayedBillAmount.innerHTML = `               \$${(billAmount.toFixed(2)).toString()}`;
         console.log(`the value of the tip percentage multiplier is ${tipPercentageMultiplier}`);
     }
     if (tipPercentageMultiplier > 0) {
@@ -59,38 +60,38 @@ function setTipPercentageWithClick() {
         switch (tipPercentageButtonId) {
             case "ten-percent":
                 tipPercentageMultiplier = .10;
-                displayedTipPercentage.innerHTML = `10%`;
+                displayedTipPercentage.innerHTML = `    10%`;
                 break;
             case "fifteen-percent":
                 tipPercentageMultiplier = .15;
-                displayedTipPercentage.innerHTML = `15%`;
+                displayedTipPercentage.innerHTML = `    15%`;
                 break;
             case "twenty-percent":
                 tipPercentageMultiplier = .20;
-                displayedTipPercentage.innerHTML = `20%`;
+                displayedTipPercentage.innerHTML = `    20%`;
                 break;
             default:
                 break;
         };
     });
     console.log(`The inner html of the displayedTipPercentage is ${displayedTipPercentage.innerHTML}`);
-    //displayedTipAmountText.innerHTML = `You are tipping ${displayedTipPercentage.innerHTML}`;
     computeTipAmountAndTotalBill();
-
-    //displayedTipAmountText.innerHTML = `You are tipping ${displayedTipPercentage.innerHTML}`;
+    displayedTipAmountText.innerHTML = `You are tipping ${displayedTipPercentage.innerHTML}`;
 }
 
 function computeTipAmountAndTotalBill() {
     if (billAmount > 0) {
         let tipAmountInDollars = (billAmount * tipPercentageMultiplier);
-        displayedTipAmount.innerHTML = `                ${tipAmountInDollars.toString()}`;
-        displayedTotal.innerHTML = `             ${billAmount + tipAmountInDollars}`;
+        displayedTipAmount.innerHTML = `                \$${tipAmountInDollars.toString()}`;
+        displayedTotal.innerHTML = `             \$${billAmount + tipAmountInDollars}`;
     }
 }
 
 function tipAmountAndTotalBillError() {
     billAmount = -1;
     displayedBillAmount.innerHTML = "";
+    displayedTipPercentage.innerHTML = "";
     displayedTipAmount.innerHTML = "";
     displayedTotal.innerHTML = "";
+    displayedTipAmountText.innerHTML = `Bill amount cannot be negative.`;
 }
