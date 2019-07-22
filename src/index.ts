@@ -22,7 +22,7 @@ function validateInputBillAmount() {
     billAmount = parseInt(billAmountInput.value);
     let billAmountDecimalString = billAmount.toFixed(2);
     billAmount = parseInt(billAmountDecimalString);
-    console.log(`The validateInputBillAmount value is: ${billAmount}`);
+    console.log(`The validateInputBillAmount value is: ${billAmount.toFixed(2)}`);
 }
 
 function displayBillAmountInput() {
@@ -82,8 +82,8 @@ function setTipPercentageWithClick() {
 function computeTipAmountAndTotalBill() {
     if (billAmount > 0) {
         let tipAmountInDollars = (billAmount * tipPercentageMultiplier);
-        displayedTipAmount.innerHTML = `                \$${tipAmountInDollars.toString()}`;
-        displayedTotal.innerHTML = `             \$${billAmount + tipAmountInDollars}`;
+        displayedTipAmount.innerHTML = `                \$${tipAmountInDollars.toFixed(2)}`;
+        displayedTotal.innerHTML = `             \$${(billAmount + tipAmountInDollars).toFixed(2)}`;
     }
 }
 
